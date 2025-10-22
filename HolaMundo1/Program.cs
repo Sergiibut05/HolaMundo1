@@ -10,7 +10,7 @@ namespace HolaMundo1
             while (true)
             {
                 Console.WriteLine();
-                Console.WriteLine("=== Menu de ejercicios (0 para salir) ===");
+                Console.WriteLine("=== Menu de ejercicios ===");
                 Console.WriteLine("1) Suma y media de un array");
                 Console.WriteLine("2) Contar espacios en una cadena");
                 Console.WriteLine("3) Factorial (recursivo)");
@@ -21,6 +21,7 @@ namespace HolaMundo1
                 Console.WriteLine("8) Suma de digitos de un numero");
                 Console.WriteLine("9) Posicion del menor en un array");
                 Console.WriteLine("10) Simulacion de Banco y Clientes");
+                Console.WriteLine("0) Salir");
                 int opcion = ReadInt("Selecciona ejercicio: ");
 
                 if (opcion == 0)
@@ -33,43 +34,33 @@ namespace HolaMundo1
                 switch (opcion)
                 {
                     case 1:
-                        // Ejercicio 1
                         EjecutarEjercicio1();
                         break;
                     case 2:
-                        // Ejercicio 2
                         EjecutarEjercicio2();
                         break;
                     case 3:
-                        // Ejercicio 3
                         EjecutarEjercicio3();
                         break;
                     case 4:
-                        // Ejercicio 4
                         EjecutarEjercicio4();
                         break;
                     case 5:
-                        // Ejercicio 5
                         EjecutarEjercicio5();
                         break;
                     case 6:
-                        // Ejercicio 6
                         EjecutarEjercicio6();
                         break;
                     case 7:
-                        // Ejercicio 7
                         EjecutarEjercicio7();
                         break;
                     case 8:
-                        // Ejercicio 8
                         EjecutarEjercicio8();
                         break;
                     case 9:
-                        // Ejercicio 9
                         EjecutarEjercicio9();
                         break;
                     case 10:
-                        // Ejercicio 10
                         EjecutarEjercicio10();
                         break;
                     default:
@@ -79,7 +70,6 @@ namespace HolaMundo1
             }
         }
 
-        // Entrada sencilla
         private static int ReadInt(string prompt)
         {
             while (true)
@@ -119,10 +109,10 @@ namespace HolaMundo1
         // Ejercicio 1
         private static void EjecutarEjercicio1()
         {
-            int tam = ReadInt("Tamano del array: ");
+            int tam = ReadInt("Tamaño del array: ");
             if (tam <= 0)
             {
-                Console.WriteLine("El tamano debe ser positivo.");
+                Console.WriteLine("El tamaño debe ser positivo.");
                 return;
             }
             int[] numeros = new int[tam];
@@ -130,7 +120,7 @@ namespace HolaMundo1
             for (int i = 0; i < tam; i++)
             {
                 numeros[i] = ReadInt($"Valor [{i}]: ");
-                suma += numeros[i];
+                suma = suma + numeros[i];
             }
             double media = (double)suma / tam;
             Console.WriteLine($"Suma: {suma}");
@@ -141,12 +131,6 @@ namespace HolaMundo1
         private static void EjecutarEjercicio2()
         {
             string texto = ReadText("Introduce una cadena: ");
-            int espacios = ContarEspacios(texto);
-            Console.WriteLine($"Numero de espacios: {espacios}");
-        }
-
-        private static int ContarEspacios(string texto)
-        {
             int contador = 0;
             foreach (char c in texto)
             {
@@ -155,7 +139,8 @@ namespace HolaMundo1
                     contador++;
                 }
             }
-            return contador;
+            Console.WriteLine($"Numero de espacios: {contador}");
+            contador = 0;
         }
 
         // Ejercicio 3
@@ -341,10 +326,6 @@ namespace HolaMundo1
 
         private static int PosicionNumeroMenor(int[] array)
         {
-            if (array == null || array.Length == 0)
-            {
-                return -1;
-            }
             int minIndex = 0;
             for (int i = 1; i < array.Length; i++)
             {
@@ -408,9 +389,9 @@ namespace HolaMundo1
 
     internal class Banco
     {
-        private readonly Cliente cliente1;
-        private readonly Cliente cliente2;
-        private readonly Cliente cliente3;
+        private  Cliente cliente1;
+        private  Cliente cliente2;
+        private  Cliente cliente3;
 
         public Banco()
         {
